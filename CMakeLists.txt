@@ -266,3 +266,26 @@ INSTALL (
     DESTINATION "${cmake_config_path}"
     COMPONENT msgpack-cxx
 )
+
+# pkgconfig file generation:
+
+SET(PKG_CONFIG_LIBDIR
+    "\${prefix}/${CMAKE_INSTALL_LIBDIR}"
+)
+SET(PKG_CONFIG_INCLUDEDIR
+    "\${prefix}/${CMAKE_INSTALL_INCLUDEDIR}"
+)
+SET(PKG_CONFIG_LIBS
+    "-L\${libdir}"
+)
+SET(PKG_CONFIG_CFLAGS
+    "-I\${includedir}"
+)
+
+CONFIGURE_FILE(
+  "${CMAKE_CURRENT_SOURCE_DIR}/cmake/pkg-config.pc.in"
+  "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}.pc"
+)
+
+INSTALL(FILES "${CMAKE_BINARY_DIR}/${PROJECT_NAME}.pc"
+        DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig)

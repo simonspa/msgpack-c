@@ -267,14 +267,7 @@ INSTALL (
     COMPONENT msgpack-cxx
 )
 
-# pkgconfig file generation:
-
-SET(PKG_CONFIG_LIBDIR
-    "\${prefix}/${CMAKE_INSTALL_LIBDIR}"
-)
-SET(PKG_CONFIG_INCLUDEDIR
-    "\${prefix}/${CMAKE_INSTALL_INCLUDEDIR}"
-)
+# Generate the pkgconfig file:
 SET(PKG_CONFIG_LIBS
     "-L\${libdir}"
 )
